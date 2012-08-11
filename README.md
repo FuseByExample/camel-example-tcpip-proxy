@@ -11,7 +11,7 @@ This document describes a simple prototype that demonstrates the use of Fuse ESB
 
 Here is the design:
 
-![Design Image](https://raw.github.com/FuseByExample/camel-example-tcpip-proxy/master/images/design.png "Design Image")
+![Design Image](https://raw.github.com/FuseByExample/camel-example-tcpip-proxy/master/images/design.jpg "Design Image")
 
 Client sends TCP/IP messages to ESB acting as a proxy. A failover-capable router pickups up messages and sends them
 to Controller 1 using a TCP/IP service call. Controller 1 stamps the message as having been processed and returns it
