@@ -11,7 +11,7 @@ This document describes a simple prototype that demonstrates the use of Fuse ESB
 
 Here is the design:
 
-![Design Image](/images/design.png "Design Image")
+![Design Image](https://raw.github.com/FuseByExample/camel-example-tcpip-proxy/master/images/design.png "Design Image")
 
 Client sends TCP/IP messages to ESB acting as a proxy. A failover-capable router pickups up messages and sends them
 to Controller 1 using a TCP/IP service call. Controller 1 stamps the message as having been processed and returns it
@@ -58,7 +58,7 @@ Start Fuse ESB
 
 Run the command `bin/fuseesb` in the root directory of Fuse ESB. Here is what the console looks like:
 
-![Console Image](/images/console.png "Console Image")
+![Console Image](https://raw.github.com/FuseByExample/camel-example-tcpip-proxy/master/images/console.png "Console Image")
 
 Building the projects
 ---------------------
@@ -146,11 +146,11 @@ configuration of the failover-load balancer)
 
 To inspect the projects using Fuse IDE, launch Fuse IDE and import the three projects as “Existing Maven Projects”:
 
-![Import Maven Projects Image](/images/import-maven-projects.jpg "Import Maven Projects Image")
+![Import Maven Projects Image](https://raw.github.com/FuseByExample/camel-example-tcpip-proxy/master/images/import-maven-projects.jpg "Import Maven Projects Image")
 
 Navigate to the router project’s camel-context.xml file to see a visual editor for the integration:
 
-![Camel Context Image](/images/camel-context.jpg "Camel Context Image")
+![Camel Context Image](https://raw.github.com/FuseByExample/camel-example-tcpip-proxy/master/images/camel-context.jpg "Camel Context Image")
 
 Switch to the Source tab to see the definition of the integration:
 
