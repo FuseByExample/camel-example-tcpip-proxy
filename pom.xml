@@ -26,7 +26,7 @@
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>Fuse ESB Proxy Demo</name>
+    <name>JBoss Fuse Proxy Demo</name>
     <url>http://fusesource.com</url>
 
     <licenses>
@@ -47,9 +47,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <camel.version>2.9.0.fuse-70-097</camel.version>
+        <camel.version>2.10.0.redhat-60015</camel.version>
 
-        <slf4j.version>1.6.4</slf4j.version>
+        <slf4j.version>1.7.2</slf4j.version>
         <log4j.version>1.2.16</log4j.version>
     </properties>
 
@@ -78,17 +78,17 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.camel</groupId>
-                <artifactId>camel-netty</artifactId>
-                <version>${camel.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.camel</groupId>
                 <artifactId>camel-groovy</artifactId>
                 <version>${camel.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-test</artifactId>
+                <version>${camel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-test-spring</artifactId>
                 <version>${camel.version}</version>
             </dependency>
 
@@ -163,6 +163,17 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>fusesource.ea</id>
+            <name>FuseSource Early Access</name>
+            <url>http://repo.fusesource.com/nexus/content/groups/ea/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -175,6 +186,17 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>fusesource.ea</id>
+            <name>FuseSource Early Access</name>
+            <url>http://repo.fusesource.com/nexus/content/groups/ea/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
         </pluginRepository>
     </pluginRepositories>
 
