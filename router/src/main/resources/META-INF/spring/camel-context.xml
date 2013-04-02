@@ -19,18 +19,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
        xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       ">
 
     <camelContext xmlns="http://camel.apache.org/schema/spring">
-    <route id="route1">
-        <from uri="mina:tcp://0.0.0.0:9000?textline=true&amp;sync=true"/>
-        <loadBalance>
-            <failover maximumFailoverAttempts="-1" roundRobin="false"/>
-            <to uri="mina:tcp://localhost:9001?textline=true&amp;sync=true"/>
-            <to uri="mina:tcp://localhost:9002?textline=true&amp;sync=true"/>
-        </loadBalance>
-    </route>
-</camelContext>
+        <route id="route1">
+            <from uri="mina:tcp://0.0.0.0:9000?textline=true&amp;sync=true"/>
+            <loadBalance>
+                <failover maximumFailoverAttempts="-1" roundRobin="false"/>
+                <to uri="mina:tcp://localhost:9001?textline=true&amp;sync=true"/>
+                <to uri="mina:tcp://localhost:9002?textline=true&amp;sync=true"/>
+            </loadBalance>
+        </route>
+    </camelContext>
 
 </beans>

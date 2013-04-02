@@ -21,7 +21,7 @@ kill to demonstrate failover. In practice, additional Fuse ESB containers would 
 
 * JBoss Fuse 6.0.0
 * Fuse IDE (optional) -- http://fusesource.com/downloads
-* Maven 2.2 or 3.0 -- http://maven.apache.org
+* Maven 3.x -- http://maven.apache.org
 * JDK 1.6
 
 Installing Fuse
@@ -43,10 +43,10 @@ Project Layout
 
 There are three modules: applications, controllers and router. Here is the layout in the file system:
 
-*JBoss Fuse - RouterDemo
-    * client
-    * controller
-    * router
+- JBoss Fuse - RouterDemo
+  - client
+  - controller
+  - router
 
 All of the projects’ build and deploy steps can be performed from Fuse IDE or from the command line; I’ll show it from
 the command line here as it is the simplest to describe, and then show Fuse IDE afterwards.

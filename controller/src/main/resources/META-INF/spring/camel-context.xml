@@ -20,19 +20,20 @@
        xmlns:camel="http://camel.apache.org/schema/spring"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       ">
 
     <camelContext xmlns="http://camel.apache.org/schema/spring">
-    <propertyPlaceholder location="proxy.properties" id="properties"/>
-    <route id="controller">
-        <from uri="mina:tcp://0.0.0.0:{{controller.port}}?textline=true&amp;sync=true"/>
-        <log message="{{controller.name}} request data: ${body}"/>
-        <setBody>
-            <groovy>request.getBody(java.lang.String).replaceFirst("&lt;/data&gt;", "&lt;controller&gt;{{controller.name}}&lt;/controller&gt;&lt;/data&gt;")</groovy>
-        </setBody>
-        <log message="{{controller.name}} response data: ${body}"/>
-    </route>
-</camelContext>
+        <propertyPlaceholder location="proxy.properties" id="properties"/>
+        <route id="controller">
+            <from uri="mina:tcp://0.0.0.0:{{controller.port}}?textline=true&amp;sync=true"/>
+            <log message="{{controller.name}} request data: ${body}"/>
+            <setBody>
+                <groovy>request.getBody(java.lang.String).replaceFirst("&lt;/data&gt;", "&lt;controller&gt;{{controller.name}}&lt;/controller&gt;&lt;/data&gt;")</groovy>
+            </setBody>
+            <log message="{{controller.name}} response data: ${body}"/>
+        </route>
+    </camelContext>
 
 </beans>
