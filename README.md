@@ -102,7 +102,7 @@ to launch the test Client application:
 You should see the Client sending and receiving messages like below. Notice the response has a <controller> element,
 that initially contains 'Controller 1'
 
-    17:44:47 INFO  Apache Camel 2.10.0.redhat-60015 (CamelContext: camel-1) started in 0.573 seconds
+    17:44:47 INFO  Apache Camel 2.10.0.redhat-60024 (CamelContext: camel-1) started in 0.573 seconds
     17:44:47 INFO  Sending message 1 with data: <data><messageNumber>1</messageNumber><timestamp>17:44:47.348</timestamp></data>
     17:44:47 INFO  Received 1 message: <data><messageNumber>1</messageNumber><timestamp>17:44:47.348</timestamp><controller>Controller 1</controller></data>
     17:44:48 INFO  Sending message 2 with data: <data><messageNumber>2</messageNumber><timestamp>17:44:48.335</timestamp></data>
