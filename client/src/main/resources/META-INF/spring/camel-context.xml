@@ -31,7 +31,7 @@
                 <simple>&lt;data&gt;&lt;messageNumber&gt;${property.CamelTimerCounter}&lt;/messageNumber&gt;&lt;timestamp&gt;${date:now:kk:mm:ss.SS}&lt;/timestamp&gt;&lt;/data&gt;</simple>
             </setBody>
             <log message="Sending message ${property.CamelTimerCounter} with data: ${body}"/>
-            <to uri="mina:tcp://localhost:9000?textline=true&amp;sync=true"/>
+            <to uri="mina:tcp://0.0.0.0:9000?textline=true&amp;sync=true"/>
             <log message="Received ${property.CamelTimerCounter} message: ${body}"/>
         </route>
     </camelContext>
