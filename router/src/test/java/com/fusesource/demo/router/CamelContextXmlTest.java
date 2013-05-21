@@ -68,7 +68,7 @@ public class CamelContextXmlTest extends CamelSpringTestSupport {
 
         // after the execution of the following line we see a stacktrace of MinaProducer failing to get the Mina IoSession
         // as the MinaConsumer of the route "controller1" is already gone. however as we've got a failover load balancer
-        // (inside camel-context.xml) the MinaConsumer of other route "controller2" will kick in
+        // (inside camel-context.xml) the MinaConsumer of other route "controller2" will just kick in automatically
         response = inputEndpoint.requestBody("mina:tcp://localhost:9000?textline=true&sync=true", request);
 
         assertEquals("Incorrect response from controller 2", expectedResponse2, response);
