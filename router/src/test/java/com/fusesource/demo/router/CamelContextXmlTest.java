@@ -32,7 +32,7 @@ public class CamelContextXmlTest extends CamelSpringTestSupport {
 
     @Test
     public void testCamelRoute() throws Exception {
-        // Create routes from the output endpoints to our mock endpoints so we can assert expectations
+        // Create 2 routes consuming from the tcp ports the route "route1" (inside camel-context.xml) writes into
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
@@ -54,13 +54,22 @@ public class CamelContextXmlTest extends CamelSpringTestSupport {
         final String expectedResponse1 = "<data><stuff/><controller>Controller 1</controller></data>";
         final String expectedResponse2 = "<data><stuff/><controller>Controller 2</controller></data>";
 
-        String response = inputEndpoint.requestBody("mina:tcp://localhost:9000?textline=true&sync=true", request, String.class);
+        Object response = inputEndpoint.requestBody("mina:tcp://0.0.0.0:9000?textline=true&sync=true", request);
 
         assertEquals("Incorrect response from controller 1", expectedResponse1, response);
 
         context().stopRoute("controller1");
 
-        response = inputEndpoint.requestBody("mina:tcp://localhost:9000?textline=true&sync=true", request, String.class);
+        // in addition to stopping the route "controller1" let's remove it as well so that Camel graceful shutdown
+        // (when test is tearing down) doesn't try to unbind the port 9001 again which is actually not bound anymore
+        // (has already happened after the route stop). this could be confusing for the users:
+        // (java.lang.IllegalArgumentException: Address not bound: /0.0.0.0:9001)
+        context().removeRoute("controller1");
+
+        // after the execution of the following line we see a stacktrace of MinaProducer failing to get the Mina IoSession
+        // as the MinaConsumer of the route "controller1" is already gone. however as we've got a failover load balancer
+        // (inside camel-context.xml) the MinaConsumer of other route "controller2" will just kick in automatically
+        response = inputEndpoint.requestBody("mina:tcp://localhost:9000?textline=true&sync=true", request);
 
         assertEquals("Incorrect response from controller 2", expectedResponse2, response);
     }

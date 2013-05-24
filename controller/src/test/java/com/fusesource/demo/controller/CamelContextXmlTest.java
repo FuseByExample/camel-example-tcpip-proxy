@@ -30,9 +30,9 @@ public class CamelContextXmlTest extends CamelSpringTestSupport {
 
     @Test
     public void testCamelRoute() throws Exception {
-        String body = "<data><stuff/></data>\n";
+        String body = "<data><stuff/></data>";
 
-        String response = inputEndpoint.requestBody("mina:tcp://localhost:9001?textline=true&sync=true", body, java.lang.String.class);
+        Object response = inputEndpoint.requestBody("mina:tcp://localhost:9001?textline=true&sync=true", body);
 
         assertEquals("Incorrect Response", "<data><stuff/><controller>Controller 1</controller></data>", response);
     }
