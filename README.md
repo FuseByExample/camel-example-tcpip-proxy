@@ -19,10 +19,9 @@ kill to demonstrate failover. In practice, additional Fuse ESB containers would 
 
 ### Software Requirements:
 
-* JBoss Fuse 6.0.0
-* Fuse IDE (optional) -- http://fusesource.com/downloads
+* JBoss Fuse 6.1.0
 * Maven 3.x -- http://maven.apache.org
-* JDK 1.6
+* JDK 1.6 or 1.7
 
 Installing Fuse
 ---------------
@@ -30,12 +29,6 @@ Installing Fuse
 ### Download and Install JBoss Fuse
 
 * Download JBoss Fuse at http://www.redhat.com/jbossfuse/download
-* I recommend downloading the .zip or .tar.gz archives rather than the full platform installers.
-* Unzip the archive in a directory without spaces in its path.
-
-### Download and Install Fuse IDE (optional, not required for this demo)
-
-* Download Fuse IDE at http://repo.fusesource.com/ide/
 * Unzip the archive in a directory without spaces in its path.
 
 Project Layout
@@ -47,9 +40,6 @@ There are three modules: applications, controllers and router. Here is the layou
   - client
   - controller
   - router
-
-All of the projects’ build and deploy steps can be performed from Fuse IDE or from the command line; I’ll show it from
-the command line here as it is the simplest to describe, and then show Fuse IDE afterwards.
 
 Start Fuse ESB
 --------------
@@ -142,28 +132,6 @@ configuration of the failover-load balancer)
     17:45:30 INFO  Sending message 44 with data: <data><messageNumber>44</messageNumber><timestamp>17:45:30.335</timestamp></data>
     17:45:30 INFO  Received 44 message: <data><messageNumber>44</messageNumber><timestamp>17:45:30.335</timestamp><controller>Controller 1</controller></data>
 
-To inspect the projects using Fuse IDE, launch Fuse IDE and import the three projects as “Existing Maven Projects”:
-
-![Import Maven Projects Image](https://raw.github.com/FuseByExample/camel-example-tcpip-proxy/master/images/import-maven-projects.png "Import Maven Projects Image")
-
-Navigate to the router project’s camel-context.xml file to see a visual editor for the integration:
-
-![Camel Context Image](https://raw.github.com/FuseByExample/camel-example-tcpip-proxy/master/images/camel-context.png "Camel Context Image")
-
-Switch to the Source tab to see the definition of the integration:
-
-```xml
-<camelContext xmlns="http://camel.apache.org/schema/spring">
-    <route id="route1">
-        <from uri="mina:tcp://0.0.0.0:9000?textline=true&amp;sync=true"/>
-        <loadBalance>
-            <failover maximumFailoverAttempts="-1" roundRobin="false"/>
-            <to uri="mina:tcp://localhost:9001?textline=true&amp;sync=true"/>
-            <to uri="mina:tcp://localhost:9002?textline=true&amp;sync=true"/>
-        </loadBalance>
-    </route>
-</camelContext>
-```
 
 Links to additional documentation
 ---------------------------------
