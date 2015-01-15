@@ -47,10 +47,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <camel.version>2.12.0.redhat-610379</camel.version>
-
-        <slf4j.version>1.6.6</slf4j.version>
-        <log4j.version>1.2.16</log4j.version>
+        <camel.version>2.14.0.redhat-620058</camel.version>
+        <exec.maven.plugin.version>1.3.2</exec.maven.plugin.version>
+        <felix.maven.bundle.plugin>2.5.3</felix.maven.bundle.plugin>
+        <maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.resources.plugin.version>2.7</maven.resources.plugin.version>
+        <slf4j.version>1.7.10</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
 
     <modules>
@@ -123,18 +128,18 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>2.3.7</version>
+                    <version>${felix.maven.bundle.plugin}</version>
                     <extensions>true</extensions>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>1.2.1</version>
+                    <version>${exec.maven.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>${maven.resources.plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -143,10 +148,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
         </plugins>
