@@ -20,7 +20,7 @@ kill to demonstrate failover. In practice, additional Fuse ESB containers would 
 ### Software Requirements:
 
 * JBoss Fuse 6.2.0
-* Maven 3.x -- http://maven.apache.org
+* Maven 3.2.3 -- http://maven.apache.org
 * JDK 1.7 or 1.8
 
 Installing Fuse
@@ -84,7 +84,7 @@ And in the other execute the command to launch Controller 2:
 Launch Client
 -------------
 
-Open a new terminal sessions and switch to the root of the applications project. In the session, execute this command
+Open a new terminal sessions and switch to the client directory. In the session, execute this command
 to launch the test Client application:
 
     client$ mvn camel:run
